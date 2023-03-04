@@ -1,6 +1,6 @@
 import {useRef, useState, useEffect} from 'react';
 import useAuth from '../hooks/useAuth';
-import {Link, useNavigate, useLocation} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 
 import axios from '../api/axios';
 const LOGIN_URL = '/auth';
@@ -50,7 +50,7 @@ const Login = () => {
             } else if (err.response?.status === 400){
                 setErrMsg('Missing Username or Password')
             } else if (err.response?.status === 401){
-                setErrMsg('Unathorised')
+                setErrMsg('Unauthorised')
             } else {
                 setErrMsg('Login Failed')
             }

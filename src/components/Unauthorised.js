@@ -1,8 +1,8 @@
-const Unathorised = () => {
+const Unauthorised = () => {
     return(
         <section>
             <p>Unauthorised Access</p>
         </section>
     )
 }
-export default Unathorised
+export default Unauthorised
