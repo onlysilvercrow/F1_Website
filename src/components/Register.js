@@ -91,57 +91,59 @@ const Register = () => {
                 </p>
             </section>
         ) : (      
-        <section>
+        <section className="acc-form">
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>Register</h1>
             <form onSubmit= {handleSubmit}>
-                <label htmlFor="username">
-                    Username:
-                    <span className = {validName ? "valid" : "hide"}>
-                        <FontAwesomeIcon icon={faCheck} />
-                    </span>
-                    <span className = {validName || !user ? "hide" : "invalid"}>
-                        <FontAwesomeIcon icon={faTimes} />
-                    </span>
-                </label>
-                <input
-                    type = "text"
-                    id = "username"
-                    ref = {userRef}
-                    autoComplete="off"
-                    onChange={(e) => setUser(e.target.value)}
-                    required
-                    aria-invalid = {validName ? "false" : "true"}
-                    aria-describedby="uidnote"
-                    onFocus={() => setUserFocus(true)}
-                    onBlur={() => setUserFocus(false)}
-                />
+                <div className='form-field'>
+                    <label htmlFor="username">
+                        Username:
+                        <span className = {validName ? "valid" : "hide"}>
+                            <FontAwesomeIcon icon={faCheck} />
+                        </span>
+                        <span className = {validName || !user ? "hide" : "invalid"}>
+                            <FontAwesomeIcon icon={faTimes} />
+                        </span>
+                    </label>
+                    <input
+                        type = "text"
+                        id = "username"
+                        ref = {userRef}
+                        autoComplete="off"
+                        onChange={(e) => setUser(e.target.value)}
+                        required
+                        aria-invalid = {validName ? "false" : "true"}
+                        aria-describedby="uidnote"
+                        onFocus={() => setUserFocus(true)}
+                        onBlur={() => setUserFocus(false)}
+                    />
+                </div>
                 <p id="uidnote" className ={userFocus && user && !validName ? "instructions": "offscreen"}>
                     <FontAwesomeIcon  icon={faInfoCircle} />
                     4 to 24 characters. <br />
                     Must begin with a letter. <br />
                     Letters, numbers, underscores, hyphens allowed.
                 </p>
-
-                <label htmlFor="password">
-                    Password:
-                    <span className = {validPwd ? "valid" : "hide"}>
-                        <FontAwesomeIcon icon={faCheck} />
-                    </span>
-                    <span className = {validPwd || !pwd ? "hide" : "invalid"}>
-                        <FontAwesomeIcon icon={faTimes} />
-                    </span>
-                </label>
-                <input
-                    type = "password"
-                    id = "password"
-                    onChange={(e) => setPwd(e.target.value)}
-                    required
-                    aria-invalid = {validPwd ? "false" : "true"}
-                    aria-describedby="pwdnote"
-                    onFocus={() => setPwdFocus(true)}
-                    onBlur={() => setPwdFocus(false)}
-                />
+                <div className='form-field'>
+                    <label htmlFor="password">
+                        Password:
+                        <span className = {validPwd ? "valid" : "hide"}>
+                            <FontAwesomeIcon icon={faCheck} />
+                        </span>
+                        <span className = {validPwd || !pwd ? "hide" : "invalid"}>
+                            <FontAwesomeIcon icon={faTimes} />
+                        </span>
+                    </label>
+                    <input
+                        type = "password"
+                        id = "password"
+                        onChange={(e) => setPwd(e.target.value)}
+                        required
+                        aria-invalid = {validPwd ? "false" : "true"}
+                        aria-describedby="pwdnote"
+                        onFocus={() => setPwdFocus(true)}
+                        onBlur={() => setPwdFocus(false)}
+                    />
+                </div>
                 <p id="pwdnote" className ={pwdFocus && !validPwd ? "instructions": "offscreen"}>
                     <FontAwesomeIcon  icon={faInfoCircle} />
                     8 to 24 characters. <br />
@@ -149,37 +151,48 @@ const Register = () => {
                     Allowed special characters: <span aria-label = "exclamation mark"></span> ! <span aria-label = "at symbol"></span> @ <span aria-label = "hashtag"></span> # <span aria-label = "dollar sign"></span> $<span aria-label = "percent"></span> %
                 </p>
 
-                <label htmlFor="confirm_pwd">
-                    Confirm Password:
-                    <span className = {validMatch && matchPwd ? "valid" : "hide"}>
-                        <FontAwesomeIcon icon={faCheck} />
-                    </span>
-                    <span className = {validMatch || !matchPwd ? "hide" : "invalid"}>
-                        <FontAwesomeIcon icon={faTimes} />
-                    </span>
-                </label>
-                <input
-                    type = "password"
-                    id = "confirm_pwd"
-                    onChange={(e) => setMatchPwd(e.target.value)}
-                    required
-                    aria-invalid = {validMatch ? "false" : "true"}
-                    aria-describedby="confirmpwdnote"
-                    onFocus={() => setMatchFocus(true)}
-                    onBlur={() => setMatchFocus(false)}
-                />
+                <div className='form-field' 
+                    style = {{
+                        minWidth:"450px"
+                }}>
+                    <label htmlFor="confirm_pwd">
+                        Confirm Password:
+                        <span className = {validMatch && matchPwd ? "valid" : "hide"}>
+                            <FontAwesomeIcon icon={faCheck} />
+                        </span>
+                        <span className = {validMatch || !matchPwd ? "hide" : "invalid"}>
+                            <FontAwesomeIcon icon={faTimes} />
+                        </span>
+                    </label>
+                    <input
+                        type = "password"
+                        id = "confirm_pwd"
+                        onChange={(e) => setMatchPwd(e.target.value)}
+                        required
+                        aria-invalid = {validMatch ? "false" : "true"}
+                        aria-describedby="confirmpwdnote"
+                        onFocus={() => setMatchFocus(true)}
+                        onBlur={() => setMatchFocus(false)}
+                    />
+                </div>
                 <p id="confirmpwdnote" className ={matchFocus && !validMatch ? "instructions": "offscreen"}>
                     <FontAwesomeIcon  icon={faInfoCircle} />
                     Passwords do not match.
                 </p>
-
-                <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+                <div className='form-button'>
+                    <button disabled=
+                    {!validName || !validPwd || !validMatch ? true : false}
+                    style={{
+                        width: "100%"
+                    }}
+                    >REGISTER</button>
+                </div>
             </form>
-            <p>
-                Already Registered? <br />
+            <p className="text-under-form">
+                ALREADY REGISTERED? <br />
                 <span className="line">
                     {/*router link here*/}
-                    <a href = "http://localhost:3000/login">Sign In</a>
+                    <a href = "http://localhost:3000/login">{'Sign In'.toUpperCase()}</a>
                 </span>
             </p>
         </section>

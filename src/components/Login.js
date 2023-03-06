@@ -62,36 +62,43 @@ const Login = () => {
 
 
     return(
-        <section>
+        <section className="acc-form">
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>Sign In</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
-                <input  
-                    type="text" 
-                    id="username" 
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setUser(e.target.value)}
-                    value={user}
-                    required
-                />
-                <label htmlFor="password">Password:</label>
-                <input  
-                    type="password" 
-                    id="password" 
-                    autoComplete="off"
-                    onChange={(e) => setPwd(e.target.value)}
-                    value={pwd}
-                    required
-                />
-                <button>Sign In</button>
+                <div className='form-field'>
+                    <label htmlFor="username">USERNAME:</label>
+                    <input  
+                        type="text" 
+                        id="username" 
+                        ref={userRef}
+                        autoComplete="off"
+                        onChange={(e) => setUser(e.target.value)}
+                        value={user}
+                        required
+                    />
+                </div>
+                <div className='form-field'>
+                    <label htmlFor="password">PASSWORD:</label>
+                    <input  
+                        type="password" 
+                        id="password" 
+                        autoComplete="off"
+                        onChange={(e) => setPwd(e.target.value)}
+                        value={pwd}
+                        required
+                    />
+                </div>
+                <div className='form-button'>
+                    <button style={{
+                        width:  "100%"
+                    }}>SIGN IN</button>
+                </div>
             </form>
-            <p>
-                Need an Account<br />
+            <p className='text-under-form'>
+                DON'T HAVE AN ACCOUNT?<br />
                 <span className="line">
                     {/*router link here*/}
-                    <a href = "http://localhost:3000/register">Sign Up</a>
+                    <a href = "http://localhost:3000/register">REGISTER</a>
                 </span>
             </p>
         </section>

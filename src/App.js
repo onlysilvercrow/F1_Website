@@ -8,6 +8,7 @@ import Championship from './components/Championship'
 import Missing from './components/Missing'
 import RequireAuth from './components/RequireAuth'
 import {Routes, Route} from 'react-router-dom'
+import NewPage from './components/NewPage'
 
 const ROLES = {
   'user': 2001,
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element= {<Home />} />
         <Route exact path="/login" element= {<Login />} />
         <Route exact path="/register" element= {<Register />} />
+        <Route exact path="/newpage" element= {<NewPage />} />
         <Route exact path="/unauthorised" element= {<Unauthorised />} />
         
         {/*Protected routes*/}

@@ -1,96 +1,160 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-
-* {
-    margin: 0;
+@font-face {
+    font-family: F1Font;
+    src: url('../Genos-VariableFont_wght.ttf');
+}
+*{
     padding: 0;
-    box-sizing: border-box;
+    margin: 0;
+    
 }
 
-html {
-    font-family: 'Nunito', sans-serif;
-    font-size: 22px;
-    color: #fff;
-}
-
-body {
-    min-height: 100vh;
-    background-color: dodgerblue;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; 
-  padding: 1rem 0.5rem;
-}
-
-section {
-    width: 100%;
-    max-width: 420px;
-    min-height: 400px;
+.nav-bar{
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1rem;
-    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    background-color: #e10600;
+    padding: 0.5rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    max-width:  100%;
 }
 
-/*sectionHome {
-    width: 100%;
-    max-width: 420px;
-    min-height: 400px;
+.nav-width{
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1rem;
-    background-color: rgba(0,0,0,0.4);
-}*/
+    justify-content: space-between;
+    width: 100vw;
+    max-width: 1200px;
+}
 
-form {
+.nav-bar-button{
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-color: transparent;
+    color: white;
+    background-color: transparent;
+    padding: 0.5rem;
+    min-width: 150px;
+    font-family: 'F1Font';
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 0.08rem;
+    
+}
+
+.nav-bar-button:hover{
+    cursor: pointer;
+    background-color: black;
+}
+
+.Header{
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-grow: 1;
+    justify-content: center;
+    background-color: #e10600;
+    color: white;
+    font-family: 'F1Font';
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 0.08rem;
     padding-bottom: 1rem;
+    max-width:  100%;
 }
 
-a, a:visited {
-    color: #fff;
+.Body{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
 }
 
-input[type="text"],
-input[type="password"],
-button,
-textarea {
-  font-family: 'Nunito', sans-serif;
-  font-size: 22px;
-  padding: 0.25rem;
-  border-radius: 0.5rem;
+.Footer{
+    display: flex;
+    justify-content: center;
+    background-color: #302f2d;
+    color: white;
+    font-family: 'F1Font';
+    font-size: 15px;
+    letter-spacing: 0.08rem;
+    padding: 1rem;
 }
 
-label,
-button {
-  margin-top: 1rem;
+.acc-form{
+    display:grid;
+    align-items: center;
+    flex-grow: 1;
+    padding-top: 15vh;
+    justify-content: center;
+    height: 100%;
 }
 
-button {
-  padding: 0.5rem;
+.form-field{
+    display: flex;
+    justify-content: space-between;
+    min-width: 340px;
+    padding: 0.5rem;
+    font-family: 'F1Font';
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.08rem;
+    align-items: center;
 }
 
-.instructions {
-    font-size: 0.75rem;
-    border-radius: 0.5rem;
-    background: #000;
-    color: #fff;
-    padding: 0.25rem;
-    position: relative;
-    bottom: -10px;
+.form-button{
+    display: flex;
+    justify-content: center;
+    min-width: 340px;
+    padding: 0.5rem;
+    font-family: 'F1Font';
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.08rem;
+    align-items: center;
 }
 
-.instructions > svg {
-    margin-right: 0.25rem;
+input{
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    margin-top: 0.2rem;
+    padding: 0.4rem;
+    font-size: 16px;
+    align-items: center;
+    border-color: #302f2d;
+    border-width: 1px;
+
+}
+
+button{
+    background-color: #302f2d;
+    color: white;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    padding: 0.3rem;
+    border-color: #302f2d;
+    font-family: 'F1Font';
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.08rem;
+}
+
+.text-under-form{
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    padding: 0.3rem;
+    padding-top: 0.8rem;
+    border-color: #302f2d;
+    font-family: 'F1Font';
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.08rem;
+}
+
+a {
+    color: #302f2d;
+}
+
+.form-button button:hover{
+    cursor: pointer;
+    background-color: #e10600;
+    border-color: #e10600;
 }
 
 .offscreen {
@@ -120,13 +184,17 @@ button {
     margin-bottom: 0.5rem;
 }
 
-.line {
-    display: inline-block;
+.instructions {
+    font-size: 0.75rem;
+    margin: 0.5rem;
+    margin-bottom: 0.7rem;
+    background: #000;
+    color: #fff;
+    padding: 0.5rem;
+    position: relative;
+    bottom: -10px;
 }
 
-.flexGrow {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
+.instructions > svg {
+    margin-right: 0.25rem;
 }
