@@ -23,8 +23,9 @@ const ROLES = {
 function App() {
   return (
     <Routes>
-      <Route element = {<PersistLogin />}>
-      <Route path="/" element={<Layout />}>      
+      <Route element = {<PersistLogin />}> 
+      <Route path="/" element={<Layout />}>     
+      
           {/*Public routes*/}
           <Route path="/" element= {<Home />} />
           <Route exact path="/login" element= {<Login />} />
@@ -33,7 +34,7 @@ function App() {
           <Route exact path="/unauthorised" element= {<Unauthorised />} />
         
           {/*Protected routes*/}
-        
+          
           <Route element = {<RequireAuth allowedRoles={[ROLES.user]}/>}>
             <Route exact path="/homepage" element= {<LoggedInHome />} />
           </Route>

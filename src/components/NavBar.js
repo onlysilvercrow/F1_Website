@@ -10,13 +10,12 @@ import jwt_decode from "jwt-decode";
 
 const NavBar = () => {
     const navigate = useNavigate()
-    const [isLoggedIn, setIsLoggedIn] = useState('')
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const {auth} = useAuth()
     const location = useLocation()
     const refresh = useRefreshToken()
-    const [username, setUsername] = useState('')
+    const [username, setUsername] = useState('username')
 
-   
 
     useEffect(() =>  {
         const verifyRefreshToken = async () => {
