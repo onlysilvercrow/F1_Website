@@ -34,7 +34,7 @@ const NavBar = () => {
         verifyRefreshToken()
 
 
-    },[location])
+    },[location || []])
 
     
 
