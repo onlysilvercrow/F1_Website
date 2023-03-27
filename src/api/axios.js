@@ -1,5 +1,5 @@
 import axios from 'axios'
-const BASE_URL = 'http://localhost:3500/'
+const BASE_URL = 'https://kind-flower-0b75d7b03.2.azurestaticapps.net/'
 const test_url = 'https://ergast.com/api/'
 
 export default axios.create({
