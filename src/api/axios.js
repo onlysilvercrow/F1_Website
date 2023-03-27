@@ -1,5 +1,5 @@
 import axios from 'axios'
-const BASE_URL = 'https://black-forest-0539e3403.2.azurestaticapps.net'
+const BASE_URL = 'http://localhost:3500/'
 const test_url = 'https://ergast.com/api/'
 
 export default axios.create({
