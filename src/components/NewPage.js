@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import Select from "react-select"
 import Chart from 'chart.js/auto'
-import 'chartjs-adapter-moment';
 import { axiosPublic } from "../api/axios"
 
 const graphOptions = [
