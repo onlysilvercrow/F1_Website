@@ -13,14 +13,14 @@ const Layout = () => {
             flexDirection: "column",
             justifyContent:"space-between"
         }}>
-            <div>
+            <div style = {{display: "flex", flexDirection:"column", flexGrow:1}}>
                 <NavBar />
                 <Header/>
                 <div className="Body">
                 <Outlet />
                 </div>
             </div>
-            <div>
+            <div style = {{display: "flex", flexDirection:"column"}}>
                 <Footer />
             </div>
         </div>

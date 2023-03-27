@@ -63,7 +63,6 @@
     justify-content: center;
     height: 100%;
     flex-grow: 1;
-    overflow-y: auto;
 }
 
 .Footer{
@@ -197,4 +196,14 @@ a {
 
 .instructions > svg {
     margin-right: 0.25rem;
+}
+
+.roots{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.word-wrap{
+    word-wrap: break-word;
 }

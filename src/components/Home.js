@@ -3,7 +3,7 @@ const Home = () => {
     const auth = useAuth()
     return(
     <main className='section-home'>
-        {console.log({auth})}
+        {/* {console.log({auth})} */}
     </main>
     )
 }

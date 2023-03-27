@@ -80,13 +80,13 @@ const NavBar = () => {
                 <div className="nav-bar">
                     <div className="nav-width">
                         <div className="nav-pages">
-                            {Pages.map(({text, func}) => (
-                                <NavButton text = {text} func={func}/>
+                            {Pages.map(({text, func}, index) => (
+                                <NavButton key = {index} text = {text} func={func}/>
                             ))}
                         </div>
                         <div className="acc-nav">
-                            {AccPagesLoggedIn.map(({text, func}) => (
-                                <NavButton text = {text} func={func}/>
+                            {AccPagesLoggedIn.map(({text, func}, index) => (
+                                <NavButton key = {index} text = {text} func={func}/>
                             ))}                          
                         </div>
                     </div>
