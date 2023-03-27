@@ -9,7 +9,7 @@ import Championship from './components/Championship'
 import Missing from './components/Missing'
 import RequireAuth from './components/RequireAuth'
 import {Routes, Route} from 'react-router-dom'
-import NewPage from './components/NewPage'
+import Graph from './components/Graph'
 import PersistLogin from './components/PersistLogin'
 import UserProfile from './components/UserProfile'
 
@@ -42,7 +42,7 @@ function App() {
             <Route exact path="/championship" element= {<Championship />} />
           </Route>
           <Route element = {<RequireAuth allowedRoles={[ROLES.VerifiedUser]}/>}></Route>
-            <Route exact path="/newpage" element= {<NewPage />}>  
+            <Route exact path="/graph" element= {<Graph />}>  
           </Route>
           <Route element = {<RequireAuth allowedRoles={[ROLES.VerifiedUser]}/>}></Route>
             <Route exact path="/userprofile" element= {<UserProfile />}>  

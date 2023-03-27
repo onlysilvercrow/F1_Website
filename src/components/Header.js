@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom"
 const Header = () => {
 
     const PageName= {
-      "/newpage": "New Page",
+      "/graph": "Graph",
       "/": "Home",
       "/championship": "Championship",
       "/register": "Register",

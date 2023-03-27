@@ -48,8 +48,8 @@ const NavBar = () => {
             func: () => navigate('/championship')
         },
         {
-            text:'New Page',
-            func: () => navigate('/newpage')
+            text:'Graph',
+            func: () => navigate('/graph')
         }
     ]
     const AccPages = [

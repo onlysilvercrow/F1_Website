@@ -20,7 +20,7 @@
 
 .nav-width{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100vw;
     max-width: 1200px;
 }
@@ -64,6 +64,15 @@
     height: 100%;
     flex-grow: 1;
 }
+
+.home-body{
+    padding-top: 5em;
+    padding-left: 10em;
+    padding-right: 10em;
+    display: block;
+    flex-grow: 1;
+}
+
 
 .Footer{
     display: flex;
