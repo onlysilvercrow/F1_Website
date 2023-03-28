@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import Select from "react-select"
 import Chart from 'chart.js/auto'
 import { axiosPublic } from "../api/axios"
-Chart.defaults.font.size = 20;
+Chart.defaults.font.size = 17;
 Chart.defaults.color = "black";
 
 const graphOptions = [
@@ -42,7 +42,11 @@ const NewPage = () => {
 
             {
               data: [],
+              backgroundColor: "#e10600",
               borderColor:"#e10600",
+              borderWidth:0.9,
+              pointStyle: "crossRot",
+              pointRadius: 5,
             }
           ]
         },
@@ -57,13 +61,20 @@ const NewPage = () => {
             y: {
               title: {
                 display: true,
-                text: 'Time(seconds)'
+                text: 'Time(seconds)',
+                font:{
+                  weight: "bold"
+                }
+                
               }
             },
             x: {
               title: {
                 display: true,
-                text: 'Year'
+                text: 'Year',
+                font:{
+                  weight: "bold"
+                }
               }
             }
           }    
