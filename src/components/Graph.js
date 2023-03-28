@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import Select from "react-select"
 import Chart from 'chart.js/auto'
 import { axiosPublic } from "../api/axios"
+Chart.defaults.font.size = 20;
+Chart.defaults.color = "black";
 
 const graphOptions = [
   {value: 'fastestLap', label: 'Fastest Lap'},
@@ -32,11 +34,15 @@ const NewPage = () => {
       document.getElementById('fastest'),
       {
         type: 'line',
+        
         data: {
           labels: [],
           datasets: [
+            
+
             {
-              data: []
+              data: [],
+              borderColor:"#e10600",
             }
           ]
         },
@@ -46,7 +52,21 @@ const NewPage = () => {
             legend: {
               display: false
             }
-          }
+          },
+          scales: {
+            y: {
+              title: {
+                display: true,
+                text: 'Time(seconds)'
+              }
+            },
+            x: {
+              title: {
+                display: true,
+                text: 'Year'
+              }
+            }
+          }    
         }
       }  
     )
