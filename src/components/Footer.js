@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer className="Footer">
-        <div className="nav-width"> 
+        <div className> 
           <ul style={{"listStyleType":"none"}}>
             <li><b>Creator:</b> Sahil Patel</li>
             <li><b>Credit:</b> Mantra Kusumgar & Deep Harquissandas</li>
