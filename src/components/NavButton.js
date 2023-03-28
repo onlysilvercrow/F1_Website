@@ -1,4 +1,4 @@
-const NavButton = ({text, func}) => {
+const NavButton = ({text, func, index}) => {
     return (
         <>
         <button className="nav-bar-button" onClick={func}>

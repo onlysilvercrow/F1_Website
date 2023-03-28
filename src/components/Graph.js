@@ -64,9 +64,11 @@ const NewPage = () => {
         await axiosPublic.get('f1/circuits.json?limit=100').then((response) => {
           const rawCircuitData = response.data.MRData.CircuitTable.Circuits
           const circuitData = rawCircuitData.map((circuits) => {
-            return {value: JSON.stringify(circuits.circuitId), label: circuits.circuitName};  
+            return {value: circuits.circuitId, label: circuits.circuitName};  
           })
-          setCircuitList(circuitData)   
+          const sortedCircuitData = (circuitData.sort((value, label) => value.label.localeCompare(label.label)))
+          setCircuitList(sortedCircuitData)
+          
         })   
       } catch (err){
         console.error(err)
