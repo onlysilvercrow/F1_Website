@@ -83,10 +83,14 @@ const NewPage = () => {
     )
   },[])
 
-  const updateChart = (chart, xData, yData) => {
+  const updateChart = (chart, xData, yData, addInfo) => {
     chart.data.labels = xData
     chart.data.datasets[0].data = yData
+    chart.options.plugins.tooltip.callbacks.footer = function(context) {
+      return `Driver: ${addInfo[context[0].dataIndex]}`
+    }
     chart.update()
+    
   }
 
   const changeSelectGraphOptionHandler = async (e) => {
@@ -118,11 +122,14 @@ const NewPage = () => {
         const year = rawFastestData.map((Races) => {
           return Races.season
         }) 
+        const drivers = rawFastestData.map((Races) => {
+          return `${Races.Results[0].Driver.givenName} ${Races.Results[0].Driver.familyName}`
+        }) 
         const timeData = timeConversion(fastestTime).map((time)=> {
           return time/1000
         })
-        const chart = Chart.getChart("fastest")    
-        updateChart(chart, year, timeData)
+        const chart = Chart.getChart("fastest")   
+        updateChart(chart, year, timeData, drivers)
       })   
     } catch (err){
       console.error(err)
