@@ -31,7 +31,6 @@ const Championship = () => {
         
     },[isLoading])
     
-    console.log(Circuits)
     
     if(!isLoading){
         return(
