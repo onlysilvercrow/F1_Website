@@ -87,7 +87,7 @@ const Register = () => {
             <section>
                 <h1>Success!</h1>
                 <p>
-                    <a href="http://localhost:3000/login">Sign In</a>
+                    <a href="https://ambitious-pebble-02008e903.2.azurestaticapps.net/login">Sign In</a>
                 </p>
             </section>
         ) : (      
