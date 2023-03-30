@@ -1,5 +1,5 @@
 import axios from 'axios'
-const BASE_URL = 'https://f1-website-api.azurewebsites.net/api/'
+const BASE_URL = 'https://f1-website-api.azurewebsites.net/'
 const test_url = 'https://ergast.com/api/'
 
 export default axios.create({
