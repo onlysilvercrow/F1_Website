@@ -2,8 +2,8 @@
 const Home = () => {
     return(
     <div className='home-body'>
-        <div style =  {{display: "flex", justifyContent: "center", paddingTop: "1em", zIndex: "1",  position: "relative"}}>
-            <h1><font size="7">F1Hub</font></h1>
+        <div style =  {{display: "flex", justifyContent: "center", paddingTop: "6em", zIndex: "1",  position: "relative"}}>
+            <p style={{fontFamily:'F1Font', fontSize: '7em'}}>F1Hub</p>
         </div>
 
     </div>
