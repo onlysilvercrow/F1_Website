@@ -7,7 +7,7 @@ const About = () => {
             <h1><font size="7">Sahil Patel</font></h1>
         </div>
         <div className='basic-info'>
-             <h3 style =  {{paddingRight: "3em", fontSize: "35px" }}>About Me:</h3>
+             <h3 style =  {{paddingBottom: "0.5em", fontSize: "35px" }}>About Me:</h3>
             <section>
                 <ul style={{listStyleType:"none", fontSize: "20px"}}>
                     <li><b>Graduation:</b> University Of Bristol</li>
