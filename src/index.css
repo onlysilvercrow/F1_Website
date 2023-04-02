@@ -202,12 +202,13 @@
 }
 
 input{
+    display:flex;
     border-top-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     margin-top: 0.2rem;
     padding: 0.4rem;
-    font-size: 16px;
-    align-items: center;
+    /* font-size: 10; */
+    /* align-items: center; */
     border-color: #302f2d;
     border-width: 1px;
 
