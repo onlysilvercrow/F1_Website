@@ -215,8 +215,6 @@ const NewPage = () => {
   };
   
 
-  
-
 
 
   return (
@@ -244,12 +242,8 @@ const NewPage = () => {
           maxMenuHeight={110}
         />
       </div>
-      {selectedGraph === "fastestLap" && <div style = {{margin: 5,  minWidth: "200px"}}>
-        <Select classNames = {{
-          control: () => {
-            return "word-wrap"
-          }
-        }}
+      {selectedGraph === "fastestLap" && <div style = {{margin: 5,  minWidth: "200px", maxWidth: "200px"}}>
+        <Select
           defaultValue={selectedTrack}
           onChange={changeSelectTrackHandler}
           options={circuitList}
@@ -257,15 +251,12 @@ const NewPage = () => {
           isSearchable
           noOptionsMessage={() => "Track not found"}
           maxMenuHeight={110}
+          
         />
       </div>}
 
-      {selectedGraph === "raceLaptimes" && <div style = {{margin: 5,  minWidth: "200px"}}>
-        <Select classNames = {{
-          control: () => {
-            return "word-wrap"
-          }
-        }}
+      {selectedGraph === "raceLaptimes" && <div style = {{margin: 5,  minWidth: "200px", maxWidth: "200px"}}>
+        <Select
           defaultValue={selectedYear}
           onChange={changeSelectYearHandler}
           options={yearList}
@@ -276,12 +267,9 @@ const NewPage = () => {
         />
       </div>}
 
-      {selectedGraph !== "fastestLap" && selectedYear && <div style = {{margin: 5,  minWidth: "200px"}}>
-        <Select classNames = {{
-          control: () => {
-            return "word-wrap"
-          }
-        }}
+      {selectedGraph !== "fastestLap" && selectedYear && <div style = {{margin: 5,  minWidth: "200px", maxWidth: "200px"}}>
+ 
+        <Select
           defaultValue={selectedRound}
           onChange={changeSelectRoundHandler}
           options={roundList}
@@ -289,6 +277,7 @@ const NewPage = () => {
           isSearchable
           noOptionsMessage={() => "Round does not exist"}
           maxMenuHeight={110}
+          
         />
       </div>}
 
