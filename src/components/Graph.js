@@ -10,6 +10,36 @@ const graphOptions = [
   {value: 'raceLaptimes', label: 'Race Laptimes'}
 ]
 
+const yearList = [
+  {value: '1996', label: '1996'},
+  {value: '1997', label: '1997'},
+  {value: '1998', label: '1998'},
+  {value: '1999', label: '1999'},
+  {value: '2001', label: '2001'},
+  {value: '2002', label: '2002'},
+  {value: '2003', label: '2003'},
+  {value: '2004', label: '2004'},
+  {value: '2005', label: '2005'},
+  {value: '2006', label: '2006'},
+  {value: '2007', label: '2007'},
+  {value: '2008', label: '2008'},
+  {value: '2009', label: '2009'},
+  {value: '2010', label: '2010'},
+  {value: '2011', label: '2011'},
+  {value: '2012', label: '2012'},
+  {value: '2013', label: '2013'},
+  {value: '2014', label: '2014'},
+  {value: '2015', label: '2015'},
+  {value: '2016', label: '2016'},
+  {value: '2017', label: '2017'},
+  {value: '2018', label: '2018'},
+  {value: '2019', label: '2019'},
+  {value: '2020', label: '2020'},
+  {value: '2021', label: '2021'},
+  {value: '2022', label: '2022'},
+  {value: '2023', label: '2023'}
+]
+
 const timeConversion = (timeStrArray) => {
   const millisecondsArray = timeStrArray.map((timeString) => {
     const timeArray = timeString.split(":"); 
@@ -26,7 +56,10 @@ const NewPage = () => {
 
   const [selectedGraph, setSelectedGraph] = useState(null);
   const [selectedTrack, setSelectedTrack] = useState(null);
+  const [selectedYear, setSelectedYear] = useState(null);
+  const [selectedRound, setSelectedRound] = useState(null);
   const [circuitList, setCircuitList] = useState([]) 
+  const [roundList, setRoundList] = useState([]) 
 
   var fastestChart
   useEffect(()=> {
@@ -61,7 +94,7 @@ const NewPage = () => {
             y: {
               title: {
                 display: true,
-                text: 'Time(seconds)',
+                text: '',
                 font:{
                   weight: "bold"
                 }
@@ -71,7 +104,7 @@ const NewPage = () => {
             x: {
               title: {
                 display: true,
-                text: 'Year',
+                text: '',
                 font:{
                   weight: "bold"
                 }
@@ -83,9 +116,11 @@ const NewPage = () => {
     )
   },[])
 
-  const updateChart = (chart, xData, yData, addInfo) => {
+  const updateChart = (chart, xData, yData, addInfo, xlabel, ylabel) => {
     chart.data.labels = xData
     chart.data.datasets[0].data = yData
+    chart.options.scales.x.title.text = xlabel
+    chart.options.scales.y.title.text = ylabel
     chart.options.plugins.tooltip.callbacks.footer = function(context) {
       return `Driver: ${addInfo[context[0].dataIndex]}`
     }
@@ -128,8 +163,47 @@ const NewPage = () => {
         const timeData = timeConversion(fastestTime).map((time)=> {
           return time/1000
         })
-        const chart = Chart.getChart("fastest")   
-        updateChart(chart, year, timeData, drivers)
+        const chart = Chart.getChart("fastest") 
+        const xlabel = "Year"
+        const ylabel =  "Time(seconds)"
+        updateChart(chart, year, timeData, drivers, xlabel, ylabel)
+      })   
+    } catch (err){
+      console.error(err)
+    }
+  };
+
+  const changeSelectYearHandler = async(e) => {
+    setSelectedYear(e.value);
+    const ScheduleURL = `f1/${selectedYear}.json?`
+    try{
+      await axiosPublic.get(ScheduleURL).then((response) => {
+        const rawScheduleData = response.data.MRData.RaceTable.Races
+        const scheduleData = rawScheduleData.map((rounds) => {
+          return {value: rounds.round, label: rounds.round};  
+        })
+        
+        setRoundList(scheduleData)
+        
+      })   
+    } catch (err){
+      console.error(err)
+    }
+  };
+
+  const changeSelectRoundHandler = async(e) => {
+    setSelectedRound(e.value);
+    const laptimeURL = `f1/${selectedYear}/${selectedRound}/laps.json?limit=2000`
+    try{
+      await axiosPublic.get(laptimeURL).then((response) => {
+        console.log(response)
+        const rawLapData = response.data.MRData.RaceTable.Races[0].Laps
+        const lapData = rawLapData.map((laps) => {
+          return {value: laps.Timings, lap: laps.number};  
+        })
+        
+        console.log(lapData)
+        
       })   
     } catch (err){
       console.error(err)
@@ -179,7 +253,37 @@ const NewPage = () => {
           noOptionsMessage={() => "Track not found"}
         />
       </div>}
-      
+
+      {selectedGraph === "raceLaptimes" && <div style = {{margin: 5,  minWidth: "200px"}}>
+        <Select classNames = {{
+          control: () => {
+            return "word-wrap"
+          }
+        }}
+          defaultValue={selectedYear}
+          onChange={changeSelectYearHandler}
+          options={yearList}
+          placeholder= "Select Year"
+          isSearchable
+          noOptionsMessage={() => "Year not found"}
+        />
+      </div>}
+
+      {selectedGraph !== "fastestLap" && selectedYear && <div style = {{margin: 5,  minWidth: "200px"}}>
+        <Select classNames = {{
+          control: () => {
+            return "word-wrap"
+          }
+        }}
+          defaultValue={selectedRound}
+          onChange={changeSelectRoundHandler}
+          options={roundList}
+          placeholder= "Select Round"
+          isSearchable
+          noOptionsMessage={() => "Round does not exist"}
+        />
+      </div>}
+
     </form>
 
     </div>

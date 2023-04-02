@@ -50,6 +50,10 @@ const NavBar = () => {
         {
             text:'Graph',
             func: () => navigate('/graph')
+        },
+        {
+            text:'About Me',
+            func: () => navigate('/about')
         }
     ]
     const AccPages = [

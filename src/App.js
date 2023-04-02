@@ -12,6 +12,7 @@ import {Routes, Route} from 'react-router-dom'
 import Graph from './components/Graph'
 import PersistLogin from './components/PersistLogin'
 import UserProfile from './components/UserProfile'
+import About from './components/About'
 
 
 const ROLES = {
@@ -32,7 +33,7 @@ function App() {
           <Route exact path="/logout" element= {<Logout />} />
           <Route exact path="/register" element= {<Register />} />
           <Route exact path="/unauthorised" element= {<Unauthorised />} />
-        
+          <Route path="/about" element= {<About />} />
           {/*Protected routes*/}
           
           <Route element = {<RequireAuth allowedRoles={[ROLES.user]}/>}>
