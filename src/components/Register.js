@@ -153,9 +153,9 @@ const Register = () => {
 
                 <div className='form-field' 
                     style = {{
-                        minWidth:"450px"
+                        //  width:"450px"
                 }}>
-                    <label htmlFor="confirm_pwd">
+                    <label style = {{display:"flex", wordWrap: "break-word", maxWidth: "150px"}} htmlFor="confirm_pwd">
                         Confirm Password:
                         <span className = {validMatch && matchPwd ? "valid" : "hide"}>
                             <FontAwesomeIcon icon={faCheck} />
@@ -183,7 +183,9 @@ const Register = () => {
                     <button disabled=
                     {!validName || !validPwd || !validMatch ? true : false}
                     style={{
-                        width: "100%"
+                        display:"flex",
+                        flexGrow: 1,
+                        justifyContent:"center"
                     }}
                     >REGISTER</button>
                 </div>

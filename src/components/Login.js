@@ -92,7 +92,10 @@ const Login = () => {
                 </div>
                 <div className='form-button'>
                     <button style={{
-                        width:  "100%"
+                        // width:  "100%"
+                        display:"flex",
+                        flexGrow: 1,
+                        justifyContent:"center"
                     }}>SIGN IN</button>
                 </div>
             </form>
