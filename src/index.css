@@ -115,10 +115,10 @@
     background-repeat: no-repeat;
     background-position: center center; */
     background-image: url("ft.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-repeat: repeat;
     color: white;
-    width: 100%;
+    width: 100vw;
     padding: 2em;
     position: relative;
     flex-direction: column;
