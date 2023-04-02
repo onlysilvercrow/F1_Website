@@ -225,10 +225,10 @@ const NewPage = () => {
         <div style = {{ position: "relative", paddingTop: "2em", height:"40vw", width:"100vw", maxHeight:"600px", maxWidth: "1200px",justifyContent: "center", alignItems: "center"}}><canvas  id={'fastest'}>
         </canvas></div>
         {/* </div> */}
-      {selectedGraph === "fastestLap" && <div style = {{padding:"0.5em"}}>
+      {selectedGraph === "fastestLap" && <div style = {{display: "flex", marginLeft:"0.5em", marginLeft: "0.5em", marginBottom: "0.5em"}}>
         <p> <b>Note:</b> Some graphs may not display information as this information is not available on the api.</p>
       </div>}
-      {selectedGraph === "fastestLap" && <div style = {{padding:"0.5em"}}>
+      {selectedGraph === "fastestLap" && <div style = {{display: "flex", marginLeft:"0.5em", marginLeft: "0.5em"}}>
         <p> <b>Interesting Discovery:</b> As you may have seen, fastest laps sometimes arent decreasing over time as expected.This could be due to several factors such as inconsistent weather conditions and regulation changes.</p>
       </div>}
       <form style = {{display: "flex", marginRight: "2em", justifyContent: "center"}}>
