@@ -1,9 +1,9 @@
 import profilepic from '../profile.jpg'
 const About = () => {
   return (
-    <>
-    <div style =  {{ display: "flex", justifyContent: "center", paddingTop: "2em", zIndex: "1",  position: "relative"}}><img src={profilepic} alt="Profile Picture" className='picture'/></div>
-        <div style =  {{display: "flex", justifyContent: "center", paddingTop: "1em", zIndex: "1",  position: "relative"}}>
+    <div style={{justifyContent:"center", width: "100%", padding: "2em"}}>
+        <div style =  {{ display: "flex", justifyContent: "center", paddingTop: "2em"}}><img src={profilepic} alt="Profile Picture" className='picture'/></div>
+        <div style =  {{display: "flex", justifyContent: "center", paddingTop: "1em"}}>
             <h1><font size="7">Sahil Patel</font></h1>
         </div>
         <div className='basic-info'>
@@ -17,7 +17,7 @@ const About = () => {
                 </ul>
             </section>
         </div>
-    </>
+    </div>
   )
 }
 
