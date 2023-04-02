@@ -26,6 +26,8 @@
 }
 
 .nav-bar-button{
+    display: inline-flex;
+    justify-content: center;
     border-top-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     border-color: transparent;
@@ -37,16 +39,47 @@
     font-size: 17px;
     font-weight: bold;
     letter-spacing: 0.08rem;
+    text-decoration: none;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
     
 }
+
+/* button{
+    background-color: #302f2d;
+    color: white;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    padding: 0.3rem;
+    border-color: #302f2d;
+    font-family: 'F1Font';
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.08rem;
+} */
 
 .nav-bar-button:hover{
     cursor: pointer;
     background-color: #302f2d;
 }
 
-.nav-bar-button:active{
+.nav-bar-button-active{
+    display: inline-flex;
+    justify-content: center;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-color: transparent;
+    color: white;
     background-color: #302f2d;
+    padding: 0.5rem;
+    min-width: 150px;
+    font-family: 'F1Font';
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 0.08rem;
+    text-decoration: none;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
 .Header{
@@ -58,7 +91,7 @@
     font-size: 40px;
     font-weight: bold;
     letter-spacing: 0.08rem;
-    padding-bottom: 1rem;
+    padding-bottom: 0rem;
     max-width:  100%;
 }
 

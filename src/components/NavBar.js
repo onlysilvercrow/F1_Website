@@ -41,40 +41,40 @@ const NavBar = () => {
     const Pages = [
         {
             text:'Home',
-            func: () => navigate('/' , 0)
+            func: '/'
         },
         {
             text:'Championship',
-            func: () => navigate('/championship')
+            func: '/championship'
         },
         {
             text:'Graph',
-            func: () => navigate('/graph')
+            func: '/graph'
         },
         {
             text:'About Me',
-            func: () => navigate('/about')
+            func: '/about'
         }
     ]
     const AccPages = [
         {
             text:'Login',
-            func: () => navigate('/login')
+            func: '/login'
         },
         {
             text:'Register',
-            func: () => navigate('/register')
+            func: '/register'
         }
     ]
 
     const AccPagesLoggedIn = [
         {
             text:'Logout',
-            func: () => navigate('/logout')
+            func: '/logout'
         },
         {
             text:username,
-            func: () => (navigate('/userprofile'))
+            func: '/userprofile'
         }
     ]
     

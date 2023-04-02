@@ -15,7 +15,7 @@ const Header = () => {
   }
     const location = useLocation()
   return (
-    <header className="Header">
+    <header>
         {/* {PageName[location.pathname].toUpperCase()} */}
     </header>
   )

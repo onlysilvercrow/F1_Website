@@ -196,13 +196,17 @@ const NewPage = () => {
     const laptimeURL = `f1/${selectedYear}/${selectedRound}/laps.json?limit=2000`
     try{
       await axiosPublic.get(laptimeURL).then((response) => {
-        console.log(response)
+        //console.log(response)
         const rawLapData = response.data.MRData.RaceTable.Races[0].Laps
         const lapData = rawLapData.map((laps) => {
           return {value: laps.Timings, lap: laps.number};  
         })
+        let y = {}
+        y = lapData[0].value.map((drivers)=>{
+          return{[drivers.driverId]: [drivers.time]}
+        })
         
-        console.log(lapData)
+        console.log(y)
         
       })   
     } catch (err){
