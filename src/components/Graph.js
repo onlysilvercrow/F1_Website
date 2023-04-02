@@ -222,7 +222,7 @@ const NewPage = () => {
   return (
     <div style = {{ display: "flex", justifyContent: "center", alignItems:"center", flexGrow: 1, flexDirection:"column"}}>
       {/* <div style = {{display: "flex", minWidth: "500px", width:"50vw", height: "50vh", justifyContent: "center"}}> */}
-        <div style = {{ position: "relative", height:"40vw", width:"100vw", justifyContent: "center", alignItems: "center"}}><canvas  id={'fastest'}>
+        <div style = {{ position: "relative", paddingTop: "2em", height:"40vw", width:"100vw", maxHeight:"600px", maxWidth: "1200px",justifyContent: "center", alignItems: "center"}}><canvas  id={'fastest'}>
         </canvas></div>
         {/* </div> */}
       {selectedGraph === "fastestLap" && <div style = {{padding:"0.5em"}}>
@@ -241,6 +241,7 @@ const NewPage = () => {
           placeholder= "Select Graph"
           isSearchable
           noOptionsMessage={() => "Graph not found"}
+          maxMenuHeight={110}
         />
       </div>
       {selectedGraph === "fastestLap" && <div style = {{margin: 5,  minWidth: "200px"}}>
@@ -255,6 +256,7 @@ const NewPage = () => {
           placeholder= "Select Track"
           isSearchable
           noOptionsMessage={() => "Track not found"}
+          maxMenuHeight={110}
         />
       </div>}
 
@@ -270,6 +272,7 @@ const NewPage = () => {
           placeholder= "Select Year"
           isSearchable
           noOptionsMessage={() => "Year not found"}
+          maxMenuHeight={110}
         />
       </div>}
 
@@ -285,6 +288,7 @@ const NewPage = () => {
           placeholder= "Select Round"
           isSearchable
           noOptionsMessage={() => "Round does not exist"}
+          maxMenuHeight={110}
         />
       </div>}
 
