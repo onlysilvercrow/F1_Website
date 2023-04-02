@@ -222,7 +222,7 @@ const NewPage = () => {
   return (
     <div style = {{ display: "flex", justifyContent: "center", alignItems:"center", flexGrow: 1, flexDirection:"column"}}>
       {/* <div style = {{display: "flex", minWidth: "500px", width:"50vw", height: "50vh", justifyContent: "center"}}> */}
-        <div style = {{display: "flex", height:"100%", width: "100%", maxHeight: "50vh", width:"800px", justifyContent: "center", alignItems: "center"}}><canvas  id={'fastest'}>
+        <div style = {{ position: "relative", height:"40vw", width:"100vw", justifyContent: "center", alignItems: "center"}}><canvas  id={'fastest'}>
         </canvas></div>
         {/* </div> */}
       {selectedGraph === "fastestLap" && <div style = {{padding:"0.5em"}}>
