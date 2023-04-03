@@ -88,11 +88,14 @@ const NewPage = () => {
           ]
         },
         options: {
+          maintainAspectRatio: false,
           responsive: true,
           plugins: {
             zoom: {
               zoom: {
                 wheel: {
+                  enabled: true,
+                },pinch: {
                   enabled: true,
                 },
 
@@ -268,19 +271,15 @@ const NewPage = () => {
   console.log(lapData)
 
   return (
-    <div style = {{ display: "flex", justifyContent: "center", alignItems:"center", flexGrow: 1, flexDirection:"column"}}>
-      {/* <div style = {{display: "flex", minWidth: "500px", width:"50vw", height: "50vh", justifyContent: "center"}}> */}
-        <div style = {{ position: "relative", paddingTop: "2em", height:"40vw", width:"100vw", maxHeight:"600px", maxWidth: "1200px",justifyContent: "center", alignItems: "center"}}><canvas  id={'fastest'}>
+    <div className="graphpage">
+      <div className="graphdiv"><canvas  id={'fastest'}>
         </canvas></div>
-        {/* </div> */}
-      {selectedGraph === "fastestLap" && <div style = {{display: "flex", marginLeft:"0.5em", marginLeft: "0.5em", marginBottom: "0.5em"}}>
-        <p style={{display: "flex-inline", width:"90vw", maxWidth: "1200px"}}> <b>Note:</b> Some graphs may not display information as this information is not available on the api.</p>
-      </div>}
-      {selectedGraph === "fastestLap" && <div style = {{display: "flex", marginLeft:"0.5em", marginLeft: "0.5em"}}>
-        <p style={{display: "flex-inline", width:"90vw", maxWidth: "1200px"}}> <b>Interesting Discovery:</b> Fastest laps sometimes may not decrease over time as expected due to several factors such as inconsistent weather conditions or regulation changes.</p>
+      {selectedGraph === "fastestLap" && <div>
+        <p> <b>Note:</b> Some graphs may not display information as this information is not available on the api.</p>
+        <p> <b>Interesting Discovery:</b> Fastest laps sometimes may not decrease over time as expected due to several factors such as inconsistent weather conditions or regulation changes.</p>
       </div>}
       <form style = {{display: "flex", justifyContent: "center"}}>
-      <div style = {{margin: 5, width:"100%", minWidth: "50px", maxWidth: "200px"}}>
+      <div className="dropdown">
         <Select
           defaultValue={selectedGraph}
 
@@ -292,7 +291,7 @@ const NewPage = () => {
           maxMenuHeight={110}
         />
       </div>
-      {selectedGraph === "fastestLap" && <div style = {{margin: 5, width:"100%", minWidth: "50px", maxWidth: "200px"}}>
+      {selectedGraph === "fastestLap" && <div className="dropdown">
         <Select
           defaultValue={selectedTrack}
           onChange={changeSelectTrackHandler}
@@ -305,7 +304,7 @@ const NewPage = () => {
         />
       </div>}
 
-      {selectedGraph === "raceLaptimes" && <div style = {{margin: 5, width:"100%",  minWidth: "100px", maxWidth: "200px"}}>
+      {selectedGraph === "raceLaptimes" && <div className="dropdown">
         <Select
           defaultValue={selectedYear}
           onChange={changeSelectYearHandler}
@@ -317,7 +316,7 @@ const NewPage = () => {
         />
       </div>}
 
-      {selectedGraph !== "fastestLap" && selectedYear !== null && <div style = {{margin: 5, width:"100%",  minWidth: "100px", maxWidth: "200px"}}>
+      {selectedGraph !== "fastestLap" && selectedYear !== null && <div className="dropdown">
  
         <Select
           defaultValue={selectedRound}

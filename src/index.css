@@ -377,3 +377,30 @@ a {
     height: 10em;
     border-radius: 5em;
 }
+
+
+
+.graphpage{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding:2em
+}
+
+.graphdiv{
+    padding-top: 2em;
+    height:60vh;
+    width:80vw;
+    max-height:600px;
+    max-width: 1200px
+}
+
+.dropdown{
+    margin: 5;
+    width: 100%;
+    min-width: 50px;
+    max-width: 200px;
+}
