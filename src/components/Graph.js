@@ -3,6 +3,9 @@ import Select from "react-select"
 import Chart from 'chart.js/auto'
 import { axiosPublic } from "../api/axios"
 import zoomPlugin from 'chartjs-plugin-zoom';
+import { useMediaQuery } from "react-responsive"
+
+const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 801px)'})
 
 Chart.register(zoomPlugin);
 Chart.defaults.font.size = 17;
@@ -274,7 +277,7 @@ const NewPage = () => {
     <div className="graphpage">
       <div className="graphdiv"><canvas  id={'fastest'}>
         </canvas></div>
-      {selectedGraph === "fastestLap" && <div>
+      {selectedGraph === "fastestLap" && isDesktopOrLaptop && <div>
         <p> <b>Note:</b> Some graphs may not display information as this information is not available on the api.</p>
         <p> <b>Interesting Discovery:</b> Fastest laps sometimes may not decrease over time as expected due to several factors such as inconsistent weather conditions or regulation changes.</p>
       </div>}
