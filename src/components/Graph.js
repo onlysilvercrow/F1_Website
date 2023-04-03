@@ -40,7 +40,7 @@ const yearList = [
   {value: '2023', label: '2023'}
 ]
 
-const timeConversion = (timeStrArray) => {
+const timeConversionArr = (timeStrArray) => {
   const millisecondsArray = timeStrArray.map((timeString) => {
     const timeArray = timeString.split(":"); 
     const minutes = parseInt(timeArray[0]);
@@ -58,6 +58,7 @@ const NewPage = () => {
   const [selectedTrack, setSelectedTrack] = useState(null);
   const [selectedYear, setSelectedYear] = useState(null);
   const [selectedRound, setSelectedRound] = useState(null);
+  const [lapData, setLapData] = useState(null);
   const [circuitList, setCircuitList] = useState([]) 
   const [roundList, setRoundList] = useState([]) 
 
@@ -116,7 +117,14 @@ const NewPage = () => {
     )
   },[])
 
-  const updateChart = (chart, xData, yData, addInfo, xlabel, ylabel) => {
+  const clearChart = (chart) => {
+    chart.data.datasets.splice(1, chart.data.datasets.length - 1)
+    chart.data.datasets[0].data = []
+    chart.data.datasets[0].label = ""
+    chart.update()
+  }
+
+  const updateChartSingleDataset = (chart, xData, yData, addInfo, xlabel, ylabel) => {
     chart.data.labels = xData
     chart.data.datasets[0].data = yData
     chart.options.scales.x.title.text = xlabel
@@ -128,8 +136,20 @@ const NewPage = () => {
     
   }
 
+  const updateChartMultipleDatasets = (chart, xData, yData, xlabel, ylabel) => {
+    chart.data.labels = xData
+    chart.data.datasets = yData
+    chart.options.scales.x.title.text = xlabel
+    chart.options.scales.y.title.text = ylabel
+    chart.update()
+    
+  }
+
   const changeSelectGraphOptionHandler = async (e) => {
+    const chart = Chart.getChart("fastest")
+    clearChart(chart)
     setSelectedGraph(e.value);
+  
       try{
         await axiosPublic.get('f1/circuits.json?limit=100').then((response) => {
           const rawCircuitData = response.data.MRData.CircuitTable.Circuits
@@ -160,13 +180,14 @@ const NewPage = () => {
         const drivers = rawFastestData.map((Races) => {
           return `${Races.Results[0].Driver.givenName} ${Races.Results[0].Driver.familyName}`
         }) 
-        const timeData = timeConversion(fastestTime).map((time)=> {
+        const timeData = timeConversionArr(fastestTime).map((time)=> {
           return time/1000
         })
         const chart = Chart.getChart("fastest") 
         const xlabel = "Year"
         const ylabel =  "Time(seconds)"
-        updateChart(chart, year, timeData, drivers, xlabel, ylabel)
+        
+        updateChartSingleDataset(chart, year, timeData, drivers, xlabel, ylabel)
       })   
     } catch (err){
       console.error(err)
@@ -175,12 +196,12 @@ const NewPage = () => {
 
   const changeSelectYearHandler = async(e) => {
     setSelectedYear(e.value);
-    const ScheduleURL = `f1/${selectedYear}.json?`
+    const ScheduleURL = `f1/${e.value}.json?`
     try{
       await axiosPublic.get(ScheduleURL).then((response) => {
         const rawScheduleData = response.data.MRData.RaceTable.Races
-        const scheduleData = rawScheduleData.map((rounds) => {
-          return {value: rounds.round, label: rounds.round};  
+        const scheduleData = rawScheduleData.map((races) => {
+          return {value: races.round, label: races.raceName};  
         })
         
         setRoundList(scheduleData)
@@ -190,10 +211,10 @@ const NewPage = () => {
       console.error(err)
     }
   };
-
+  
   const changeSelectRoundHandler = async(e) => {
     setSelectedRound(e.value);
-    const laptimeURL = `f1/${selectedYear}/${selectedRound}/laps.json?limit=2000`
+    const laptimeURL = `f1/${selectedYear}/${e.value}/laps.json?limit=2000`
     try{
       await axiosPublic.get(laptimeURL).then((response) => {
         //console.log(response)
@@ -201,21 +222,34 @@ const NewPage = () => {
         const lapData = rawLapData.map((laps) => {
           return {value: laps.Timings, lap: laps.number};  
         })
-        let y = {}
-        y = lapData[0].value.map((drivers)=>{
-          return{[drivers.driverId]: [drivers.time]}
+        let sortedLapData = {}
+        let lapNumber = []
+        lapData.map((laps)=>{
+        lapNumber.push(laps.lap)
+        laps.value.forEach(({driverId, time}) => 
+          driverId in sortedLapData ? sortedLapData[driverId].push(time) : sortedLapData[driverId] = [time])
         })
-        
-        console.log(y)
-        
+        let yData = []
+        Object.keys(sortedLapData).map((driver) => {
+          yData.push({data:timeConversionArr(sortedLapData[driver]), label: driver})
+        })
+
+        const xData = lapNumber
+        const xlabel = "Lap Number"
+        const ylabel = "Time"
+        const chart = Chart.getChart("fastest")
+        updateChartMultipleDatasets(chart, xData, yData, xlabel, ylabel)
+
+        setLapData(sortedLapData)
       })   
     } catch (err){
       console.error(err)
     }
   };
+
   
-
-
+  
+  console.log(lapData)
 
   return (
     <div style = {{ display: "flex", justifyContent: "center", alignItems:"center", flexGrow: 1, flexDirection:"column"}}>
@@ -267,7 +301,7 @@ const NewPage = () => {
         />
       </div>}
 
-      {selectedGraph !== "fastestLap" && selectedYear && <div style = {{margin: 5, width:"100%",  minWidth: "100px", maxWidth: "200px"}}>
+      {selectedGraph !== "fastestLap" && selectedYear !== null && <div style = {{margin: 5, width:"100%",  minWidth: "100px", maxWidth: "200px"}}>
  
         <Select
           defaultValue={selectedRound}
