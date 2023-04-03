@@ -2,12 +2,16 @@ import { useRef, useState, useEffect } from "react"
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import axios from '../api/axios'
+import { useMediaQuery } from "react-responsive"
 // Username and password requirements
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/
 const REGISTER_URL = 'register'
 
+
 const Register = () => {
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1100px)' })
+
     const userRef = useRef()
     const errRef = useRef()
 
@@ -104,7 +108,7 @@ const Register = () => {
                             <FontAwesomeIcon icon={faTimes} />
                         </span>
                     </label>
-                    <input
+                    <input className = {isTabletOrMobile ? "input-mobile" : ""}
                         type = "text"
                         id = "username"
                         ref = {userRef}
@@ -133,7 +137,7 @@ const Register = () => {
                             <FontAwesomeIcon icon={faTimes} />
                         </span>
                     </label>
-                    <input
+                    <input className = {isTabletOrMobile ? "input-mobile" : ""}
                         type = "password"
                         id = "password"
                         onChange={(e) => setPwd(e.target.value)}
@@ -164,7 +168,7 @@ const Register = () => {
                             <FontAwesomeIcon icon={faTimes} />
                         </span>
                     </label>
-                    <input
+                    <input className = {isTabletOrMobile ? "input-mobile" : ""}
                         type = "password"
                         id = "confirm_pwd"
                         onChange={(e) => setMatchPwd(e.target.value)}

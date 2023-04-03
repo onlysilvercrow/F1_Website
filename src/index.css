@@ -291,7 +291,11 @@ input{
     /* align-items: center; */
     border-color: #302f2d;
     border-width: 1px;
+    width: 200px
+}
 
+.input-mobile{
+    width: 150px
 }
 
 button{

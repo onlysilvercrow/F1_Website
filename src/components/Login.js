@@ -1,11 +1,12 @@
 import {useRef, useState, useEffect, useStore} from 'react';
 import useAuth from '../hooks/useAuth';
 import {useNavigate, useLocation} from 'react-router-dom';
-
+import { useMediaQuery } from 'react-responsive';
 import axios from '../api/axios';
 const LOGIN_URL = '/auth';
 
 const Login = () => {
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1100px)' })
     const {setAuth} = useAuth();
 
     const navigate = useNavigate();
@@ -69,7 +70,7 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <div className='form-field'>
                     <label htmlFor="username">USERNAME:</label>
-                    <input  
+                    <input className = {isTabletOrMobile ? "input-mobile" : ""}
                         type="text" 
                         id="username" 
                         ref={userRef}
@@ -81,7 +82,7 @@ const Login = () => {
                 </div>
                 <div className='form-field'>
                     <label htmlFor="password">PASSWORD:</label>
-                    <input  
+                    <input className = {isTabletOrMobile ? "input-mobile" : ""} 
                         type="password" 
                         id="password" 
                         autoComplete="off"
