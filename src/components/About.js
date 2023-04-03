@@ -14,9 +14,13 @@ const About = () => {
                     <li><b>Degree:</b> Mechanical and Electrical Engineering (MEng)</li>
                     <li><b>Contact:</b> sahilpatel1906@gmail.com</li>
                     <li><b>Website Purpose:</b> This website is designed as a personal project to showcase my skills in frontend and backend software development</li>
-                    <li>Github</li>
+                    <li><b>Github:</b> https://github.com/onlysilvercrow</li>
                     <li>download cv button</li>
                 </ul>
+                <a href = "CV.pdf"
+                    download="CV.pdf">
+                    <button>CV</button>
+                </a>
             </section>
         </div>
     </div>
