@@ -5,7 +5,6 @@ import { axiosPublic } from "../api/axios"
 import zoomPlugin from 'chartjs-plugin-zoom';
 import { useMediaQuery } from "react-responsive"
 
-const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 801px)'})
 
 Chart.register(zoomPlugin);
 Chart.defaults.font.size = 17;
@@ -59,6 +58,9 @@ const timeConversionArr = (timeStrArray) => {
 }
 
 const NewPage = () => {
+
+
+  const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 801px)'})
 
   const [selectedGraph, setSelectedGraph] = useState(null);
   const [selectedTrack, setSelectedTrack] = useState(null);
