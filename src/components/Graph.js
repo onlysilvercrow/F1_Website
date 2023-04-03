@@ -229,8 +229,8 @@ const NewPage = () => {
       {selectedGraph === "fastestLap" && <div style = {{display: "flex", marginLeft:"0.5em", marginLeft: "0.5em"}}>
         <p style={{display: "flex-inline", width:"90vw", maxWidth: "1200px"}}> <b>Interesting Discovery:</b> As you may have seen, fastest laps sometimes arent decreasing over time as expected.This could be due to several factors such as inconsistent weather conditions and regulation changes.</p>
       </div>}
-      <form style = {{display: "flex", marginRight: "2em", justifyContent: "center"}}>
-      <div style = {{margin: 5, minWidth: "200px"}}>
+      <form style = {{display: "flex", justifyContent: "center"}}>
+      <div style = {{margin: 5, width:"100%", minWidth: "50px", maxWidth: "200px"}}>
         <Select
           defaultValue={selectedGraph}
 
@@ -242,7 +242,7 @@ const NewPage = () => {
           maxMenuHeight={110}
         />
       </div>
-      {selectedGraph === "fastestLap" && <div style = {{margin: 5,  minWidth: "200px", maxWidth: "200px"}}>
+      {selectedGraph === "fastestLap" && <div style = {{margin: 5, width:"100%", minWidth: "50px", maxWidth: "200px"}}>
         <Select
           defaultValue={selectedTrack}
           onChange={changeSelectTrackHandler}
@@ -255,7 +255,7 @@ const NewPage = () => {
         />
       </div>}
 
-      {selectedGraph === "raceLaptimes" && <div style = {{margin: 5,  minWidth: "200px", maxWidth: "200px"}}>
+      {selectedGraph === "raceLaptimes" && <div style = {{margin: 5, width:"100%",  minWidth: "100px", maxWidth: "200px"}}>
         <Select
           defaultValue={selectedYear}
           onChange={changeSelectYearHandler}
@@ -267,7 +267,7 @@ const NewPage = () => {
         />
       </div>}
 
-      {selectedGraph !== "fastestLap" && selectedYear && <div style = {{margin: 5,  minWidth: "200px"}}>
+      {selectedGraph !== "fastestLap" && selectedYear && <div style = {{margin: 5, width:"100%",  minWidth: "100px", maxWidth: "200px"}}>
  
         <Select
           defaultValue={selectedRound}
