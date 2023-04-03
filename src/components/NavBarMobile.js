@@ -5,7 +5,7 @@ import useRefreshToken from '../hooks/useRefreshToken'
 import useAuth from "../hooks/useAuth"; 
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-
+import { slide as Menu } from 'react-burger-menu'
 
 const NavBar = () => {
     const navigate = useNavigate()
@@ -76,48 +76,30 @@ const NavBar = () => {
             func: '/userprofile'
         }
     ]
-    
+   
     if(isLoggedIn) {
-        return (
-            <>
-                <div className="nav-bar">
-                    <div className="nav-width">
-                        <div className="nav-pages">
-                            {Pages.map(({text, func}, index) => (
-                                <NavButton key = {index} text = {text} func={func}/>
-                            ))}
-                        </div>
-                        <div className="acc-nav">
-                            {AccPagesLoggedIn.map(({text, func}, index) => (
-                                <NavButton key = {index} text = {text} func={func}/>
-                            ))}                          
-                        </div>
-                    </div>
-                </div>
-            </>
+        return(
+            <Menu className="hamburger-menu">
+                {Pages.map(({text, func}, index) => (
+                    <NavButton key = {index} text = {text} func={func}/>
+                ))}
+            {AccPagesLoggedIn.map(({text, func}, index) => (
+                <NavButton key = {index} text = {text} func={func}/>
+            ))}                         
+            </Menu>
         )
-    } else{
-        return (
-            <>               
-                <div className="nav-bar">  
-                    <div className="nav-width">
-                        <div className="nav-pages">
-                            {Pages.map(({text, func}, index) => (
-                                <NavButton key = {index} text = {text} func={func}/>
-                            ))}
-                        </div>
-                        <div className="acc-nav">
-                            {AccPages.map(({text, func}, index) => (
-                                <NavButton key = {index} text = {text} func={func}/>
-                            ))}                          
-                        </div>
-                    </div>
-                </div>
-            </>           
+    } else {
+        return(
+            <Menu className="hamburger-menu">
+                {Pages.map(({text, func}, index) => (
+                    <NavButton key = {index} text = {text} func={func}/>
+                ))}
+                {AccPages.map(({text, func}, index) => (
+                    <NavButton key = {index} text = {text} func={func}/>
+                ))}                          
+            </Menu>
         )
     }
-    
-
 }
     
 

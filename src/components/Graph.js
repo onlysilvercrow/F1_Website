@@ -2,6 +2,9 @@ import { useState, useEffect } from "react"
 import Select from "react-select"
 import Chart from 'chart.js/auto'
 import { axiosPublic } from "../api/axios"
+import zoomPlugin from 'chartjs-plugin-zoom';
+
+Chart.register(zoomPlugin);
 Chart.defaults.font.size = 17;
 Chart.defaults.color = "black";
 
@@ -47,7 +50,7 @@ const timeConversionArr = (timeStrArray) => {
     const seconds = parseInt(timeArray[1].split(".")[0]); 
     const milliseconds = parseInt(timeArray[1].split(".")[1]);
     const totalMilliseconds = (minutes * 60 + seconds) * 1000 + milliseconds;
-    return totalMilliseconds;
+    return totalMilliseconds/1000;
   });
   return millisecondsArray
 }
@@ -87,6 +90,15 @@ const NewPage = () => {
         options: {
           responsive: true,
           plugins: {
+            zoom: {
+              zoom: {
+                wheel: {
+                  enabled: true,
+                },
+
+                mode: 'xy',
+              }
+            },
             legend: {
               display: false
             }
@@ -118,9 +130,11 @@ const NewPage = () => {
   },[])
 
   const clearChart = (chart) => {
-    chart.data.datasets.splice(1, chart.data.datasets.length - 1)
-    chart.data.datasets[0].data = []
-    chart.data.datasets[0].label = ""
+    chart.data.datasets = [{
+      data:[],
+      label: ""
+    }]
+    chart.resetZoom()
     chart.update()
   }
 
@@ -166,6 +180,8 @@ const NewPage = () => {
   };
   
   const changeSelectTrackHandler = async(e) => {
+    const chart = Chart.getChart("fastest")
+    chart.resetZoom()
     setSelectedTrack(e.value);
     const fastestLapURL = '/f1/fastest/1/circuits/' + e.value.replace(/["]+/g, '') + '/results.json?' 
     try{
@@ -180,9 +196,8 @@ const NewPage = () => {
         const drivers = rawFastestData.map((Races) => {
           return `${Races.Results[0].Driver.givenName} ${Races.Results[0].Driver.familyName}`
         }) 
-        const timeData = timeConversionArr(fastestTime).map((time)=> {
-          return time/1000
-        })
+        const timeData = timeConversionArr(fastestTime)
+        
         const chart = Chart.getChart("fastest") 
         const xlabel = "Year"
         const ylabel =  "Time(seconds)"
@@ -213,6 +228,8 @@ const NewPage = () => {
   };
   
   const changeSelectRoundHandler = async(e) => {
+    const chart = Chart.getChart("fastest")
+    chart.resetZoom()
     setSelectedRound(e.value);
     const laptimeURL = `f1/${selectedYear}/${e.value}/laps.json?limit=2000`
     try{
@@ -229,9 +246,8 @@ const NewPage = () => {
         laps.value.forEach(({driverId, time}) => 
           driverId in sortedLapData ? sortedLapData[driverId].push(time) : sortedLapData[driverId] = [time])
         })
-        let yData = []
-        Object.keys(sortedLapData).map((driver) => {
-          yData.push({data:timeConversionArr(sortedLapData[driver]), label: driver})
+        const yData = Object.keys(sortedLapData).map((driver) => {
+          return {data:timeConversionArr(sortedLapData[driver]), label: driver}
         })
 
         const xData = lapNumber
@@ -261,7 +277,7 @@ const NewPage = () => {
         <p style={{display: "flex-inline", width:"90vw", maxWidth: "1200px"}}> <b>Note:</b> Some graphs may not display information as this information is not available on the api.</p>
       </div>}
       {selectedGraph === "fastestLap" && <div style = {{display: "flex", marginLeft:"0.5em", marginLeft: "0.5em"}}>
-        <p style={{display: "flex-inline", width:"90vw", maxWidth: "1200px"}}> <b>Interesting Discovery:</b> As you may have seen, fastest laps sometimes arent decreasing over time as expected.This could be due to several factors such as inconsistent weather conditions and regulation changes.</p>
+        <p style={{display: "flex-inline", width:"90vw", maxWidth: "1200px"}}> <b>Interesting Discovery:</b> Fastest laps sometimes may not decrease over time as expected due to several factors such as inconsistent weather conditions or regulation changes.</p>
       </div>}
       <form style = {{display: "flex", justifyContent: "center"}}>
       <div style = {{margin: 5, width:"100%", minWidth: "50px", maxWidth: "200px"}}>
