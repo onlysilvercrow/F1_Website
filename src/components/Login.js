@@ -104,7 +104,7 @@ const Login = () => {
                 DON'T HAVE AN ACCOUNT?<br />
                 <span className="line">
                     {/*router link here*/}
-                    <a href = "https://ambitious-pebble-02008e903.2.azurestaticapps.net/register">REGISTER</a>
+                    <a href = "https://ambitious-pebble-02008e903.2.azurestaticapps.net/register" className = "login-register-links">REGISTER</a>
                 </span>
             </p>
         </section>

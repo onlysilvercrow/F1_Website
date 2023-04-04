@@ -1,27 +1,30 @@
 import profilepic from '../profile.jpg'
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faFile } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 const About = () => {
   return (
-    <div style={{justifyContent:"center", width: "100%", padding: "2em"}}>
-        <div style =  {{ display: "flex", justifyContent: "center", paddingTop: "2em"}}><img src={profilepic} alt="Profile Picture" className='picture'/></div>
-        <div style =  {{display: "flex", justifyContent: "center", paddingTop: "1em"}}>
-            <h1><font size="7">Sahil Patel</font></h1>
-        </div>
-        <div className='basic-info'>
-             <h3 style =  {{paddingBottom: "0.5em", fontSize: "35px" }}>About Me:</h3>
-            <section>
-                <ul style={{listStyleType:"none", fontSize: "20px"}}>
-                    <li><b>Graduation:</b> University Of Bristol</li>
-                    <li><b>Degree:</b> Mechanical and Electrical Engineering (MEng)</li>
-                    <li><b>Contact:</b> sahilpatel1906@gmail.com</li>
-                    <li><b>Website Purpose:</b> This website is designed as a personal project to showcase my skills in frontend and backend software development</li>
-                    <li><b>Github:</b> https://github.com/onlysilvercrow</li>
-                    <li>download cv button</li>
-                </ul>
-                <a href = "CV.pdf"
-                    download="CV.pdf">
-                    <button>CV</button>
-                </a>
-            </section>
+    <div className='about-me-page'>
+        <img src={profilepic} alt="Profile Picture" className='picture'/>
+        <h1><font size="7">Sahil Patel</font></h1>
+        <div className='basic-info'> </div>
+       
+        <h4>University Of Bristol</h4>
+        <h4>Mechanical and Electrical Engineer</h4>
+        
+        <div className='basic-info'></div>
+        
+        
+        <p> <font size="3">This website was created due to my passion for software development. Please check out my socials and CV below:</font></p>
+
+        
+        
+        <div style ={{display:"flex", padding: "1em", paddingTop:"1.5em"}}>
+            <a href = "https://www.linkedin.com/in/sahil-patel-20a8a0198/" title="LinkedIn" className='icon-link'><FontAwesomeIcon icon={faLinkedin} className="icon" /></a>
+            <hr />
+            <a href ="https://github.com/onlysilvercrow" title="Github" className = "icon-link"><FontAwesomeIcon icon={faGithub} className="icon" /></a>
+            <hr />
+            <a href ="CV.pdf" download="CV.pdf" title="Download CV" className = "icon-link"><FontAwesomeIcon icon={faFile} className="icon" /></a>
         </div>
     </div>
   )

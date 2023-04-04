@@ -91,7 +91,7 @@ const Register = () => {
             <section>
                 <h1>Success!</h1>
                 <p>
-                    <a href="https://ambitious-pebble-02008e903.2.azurestaticapps.net/login">Sign In</a>
+                    <a href="https://ambitious-pebble-02008e903.2.azurestaticapps.net/login" className = "login-register-links">Sign In</a>
                 </p>
             </section>
         ) : (      
@@ -198,7 +198,7 @@ const Register = () => {
                 ALREADY REGISTERED? <br />
                 <span className="line">
                     {/*router link here*/}
-                    <a href = "http://localhost:3000/login">{'Sign In'.toUpperCase()}</a>
+                    <a href = "http://localhost:3000/login" className = "login-register-links">{'Sign In'.toUpperCase()}</a>
                 </span>
             </p>
         </section>
