@@ -9,13 +9,13 @@ const About = () => {
         <h1><font size="7">Sahil Patel</font></h1>
         <div className='basic-info'> </div>
        
-        <h4>University Of Bristol</h4>
-        <h4>Mechanical and Electrical Engineer</h4>
+        <h3>University Of Bristol</h3>
+        <h3>Mechanical and Electrical Engineer</h3>
         
         <div className='basic-info'></div>
         
         
-        <p> <font size="3">This website was created due to my passion for software development. Please check out my socials and CV below:</font></p>
+        <p style ={{paddingLeft: "1em",paddingRight:"1em", textAlign: "center"}}> <font size="4">This website was created due to my passion for software development. Please check out my socials and CV below:</font></p>
 
         
         
