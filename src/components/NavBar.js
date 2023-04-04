@@ -5,16 +5,21 @@ import useRefreshToken from '../hooks/useRefreshToken'
 import useAuth from "../hooks/useAuth"; 
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-
+import useLogout from "../hooks/useLogout"
+import { NavLink } from "react-router-dom"
 
 const NavBar = () => {
-    const navigate = useNavigate()
     const [isLoggedIn, setIsLoggedIn] = useState()
     const {auth} = useAuth()
     const location = useLocation()
     const refresh = useRefreshToken()
     const [username, setUsername] = useState('')
-
+    const logout = useLogout()
+    const navigate = useNavigate()
+    const signOut = async() => {
+        await logout();
+        navigate('/')
+    }
 
     useEffect(() =>  {
         const verifyRefreshToken = async () => {
@@ -68,10 +73,6 @@ const NavBar = () => {
 
     const AccPagesLoggedIn = [
         {
-            text:'Logout',
-            func: '/logout'
-        },
-        {
             text:username,
             func: '/userprofile'
         }
@@ -88,6 +89,12 @@ const NavBar = () => {
                             ))}
                         </div>
                         <div className="acc-nav">
+                            <NavLink to = "/logout" 
+                                onClick={signOut}
+                                className={({ isActive }) => ( 
+                                    isActive ? 'nav-bar-button-active' :'nav-bar-button')}>
+                                    {"Logout".toUpperCase()} 
+                            </NavLink>
                             {AccPagesLoggedIn.map(({text, func}, index) => (
                                 <NavButton key = {index} text = {text} func={func}/>
                             ))}                          

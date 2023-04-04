@@ -1,19 +1,20 @@
-import useLogout from "../hooks/useLogout"
-import { useNavigate } from "react-router-dom"
+import { useMediaQuery } from "react-responsive"
 
 const Logout = () => {
-    const logout = useLogout()
-    const navigate = useNavigate()
-    const signOut = async() => {
-        await logout();
-        navigate('/')
-    }
+    const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1101px)'})
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1100px)' })
     
+    return(
+        <div style={{display:"flex", alignItems:"center", justifyContent:"center", width:"100%"}}>
+       {isDesktopOrLaptop && <div style = {{display:"flex", flexDirection:"column"}}>
+            <p style = {{ fontFamily:'F1Font', fontSize: '6em', textAlign: "center"}}>Logging Out...</p>
+        </div>}
 
-    return (
-        <section className="acc-form">
-        <button onClick={signOut}>Sign Out</button>
-        </section>
+        {isTabletOrMobile && <div style = {{display:"flex", flexDirection:"column"}}>
+            <p style = {{ fontFamily:'F1Font', fontSize: '3em', textAlign: "center"}}>Logging Out...</p>
+        </div>}
+
+        </div>
     )
 }
 
