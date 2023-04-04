@@ -283,6 +283,9 @@ const NewPage = () => {
         <p> <b>Note:</b> Some graphs may not display information as this information is not available on the api.</p>
         <p> <b>Interesting Discovery:</b> Fastest laps sometimes may not decrease over time as expected due to several factors such as inconsistent weather conditions or regulation changes.</p>
       </div>}
+      {selectedGraph === "fastestLap" && <div>
+        <p><b>Note:</b> Some graphs may not display information as this information is not available on the api.</p>
+      </div>}
       <form style = {{display: "flex", justifyContent: "center"}}>
       <div className="dropdown">
         <Select
