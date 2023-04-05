@@ -180,14 +180,14 @@
     justify-content: center;
     height: 100%;
     flex-grow: 1;
-    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadein 2s; /* Firefox < 16 */
-     -ms-animation: fadein 2s; /* Internet Explorer */
-      -o-animation: fadein 2s; /* Opera < 12.1 */
-         animation: fadein 2s;
+    /* -webkit-animation: fadein 2s; 
+    -moz-animation: fadein 2s; 
+     -ms-animation: fadein 2s; 
+      -o-animation: fadein 2s; 
+         animation: fadein 2s; */
 }
 
-@keyframes fadein {
+/* @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
@@ -214,7 +214,7 @@
 @-o-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
-}
+} */
 
 
 .home-body{
