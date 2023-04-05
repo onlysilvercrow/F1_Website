@@ -97,6 +97,10 @@ const NewPage = () => {
           responsive: true,
           plugins: {
             zoom: {
+              pan: {
+                enabled: true,
+                mode: 'xy'
+              },
               zoom: {
                 wheel: {
                   enabled: true,
