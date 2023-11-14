@@ -270,14 +270,6 @@ form{
     
 }
 
-.form-labels{
-    /* display:flex;
-    align-items:center;
-    word-wrap: break-word;
-    width: 150px; */
-}
-
-
 input{
     display:flex;
     border-top-right-radius: 0.5rem;
@@ -373,13 +365,13 @@ button{
 
 .instructions {
     font-size: 0.75rem;
-    margin-top: 0;
     margin-bottom: 0.7rem;
     background: #302f2d;
     color: #fff;
     padding: 0.5rem;
     position: relative;
     bottom: -10px;
+    width: 300px;
 }
 
 .instructions > svg {
