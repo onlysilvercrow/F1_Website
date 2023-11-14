@@ -24,7 +24,7 @@ const About = () => {
             <hr />
             <a href ="https://github.com/onlysilvercrow" title="Github" className = "icon-link"><FontAwesomeIcon icon={faGithub} className="icon" /></a>
             <hr />
-            <a href ="CV.pdf" download="CV.pdf" title="Download CV" className = "icon-link"><FontAwesomeIcon icon={faFile} className="icon" /></a>
+            <a href ="Sahil-CV.pdf" download="Sahil-CV.pdf" title="Download CV" className = "icon-link"><FontAwesomeIcon icon={faFile} className="icon" /></a>
         </div>
     </div>
   )
