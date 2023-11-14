@@ -104,10 +104,10 @@ const Register = () => {
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <form onSubmit= {handleSubmit}>
                 <div className='form-field'>
-                    <label htmlFor="username">
+                    <label className="form-labels" htmlFor="username">
                         Username:
                         <span className = {validName ? "valid" : "hide"}>
-                            <FontAwesomeIcon icon={faCheck} />
+                        <FontAwesomeIcon icon={faCheck} />
                         </span>
                         <span className = {validName || !user ? "hide" : "invalid"}>
                             <FontAwesomeIcon icon={faTimes} />
@@ -125,6 +125,7 @@ const Register = () => {
                         onFocus={() => setUserFocus(true)}
                         onBlur={() => setUserFocus(false)}
                     />
+                    
                 </div>
                 <p id="uidnote" className ={userFocus && user && !validName ? "instructions": "offscreen"}>
                     <FontAwesomeIcon  icon={faInfoCircle} />
@@ -133,14 +134,14 @@ const Register = () => {
                     Letters, numbers, underscores, hyphens allowed.
                 </p>
                 <div className='form-field'>
-                    <label htmlFor="password">
+                    <label className="form-labels" htmlFor="password">
                         Password:
                         <span className = {validPwd ? "valid" : "hide"}>
                             <FontAwesomeIcon icon={faCheck} />
                         </span>
                         <span className = {validPwd || !pwd ? "hide" : "invalid"}>
                             <FontAwesomeIcon icon={faTimes} />
-                        </span>
+                    </span>
                     </label>
                     <input className = {isTabletOrMobile ? "input-mobile" : ""}
                         type = "password"
@@ -160,11 +161,8 @@ const Register = () => {
                     Allowed special characters: <span aria-label = "exclamation mark"></span> ! <span aria-label = "at symbol"></span> @ <span aria-label = "hashtag"></span> # <span aria-label = "dollar sign"></span> $<span aria-label = "percent"></span> %
                 </p>
 
-                <div className='form-field' 
-                    style = {{
-                        //  width:"450px"
-                }}>
-                    <label style = {{display:"flex", wordWrap: "break-word", maxWidth: "150px"}} htmlFor="confirm_pwd">
+                <div className='form-field'>
+                    <label className="form-labels" htmlFor="confirm_pwd">
                         Confirm Password:
                         <span className = {validMatch && matchPwd ? "valid" : "hide"}>
                             <FontAwesomeIcon icon={faCheck} />
@@ -189,13 +187,8 @@ const Register = () => {
                     Passwords do not match.
                 </p>
                 <div className='form-button'>
-                    <button disabled=
+                    <button style = {{display:"flex", flexGrow:"1", justifyContent:"center"}}disabled=
                     {!validName || !validPwd || !validMatch ? true : false}
-                    style={{
-                        display:"flex",
-                        flexGrow: 1,
-                        justifyContent:"center"
-                    }}
                     >REGISTER</button>
                 </div>
             </form>

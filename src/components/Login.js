@@ -69,7 +69,7 @@ const Login = () => {
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <form onSubmit={handleSubmit}>
                 <div className='form-field'>
-                    <label htmlFor="username">USERNAME:</label>
+                    <label className="form-labels" htmlFor="username">Username:</label>
                     <input className = {isTabletOrMobile ? "input-mobile" : ""}
                         type="text" 
                         id="username" 
@@ -81,7 +81,7 @@ const Login = () => {
                     />
                 </div>
                 <div className='form-field'>
-                    <label htmlFor="password">PASSWORD:</label>
+                    <label className="form-labels" htmlFor="password">Password:</label>
                     <input className = {isTabletOrMobile ? "input-mobile" : ""} 
                         type="password" 
                         id="password" 

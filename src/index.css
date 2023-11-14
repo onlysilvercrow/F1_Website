@@ -233,19 +233,18 @@
 }
 
 .acc-form{
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    /* flex-grow: 1; */
-    padding-top: 15vh;
+    flex-grow: 1;
     justify-content: center;
-    height: 100%;
+
 }
 
 .form-field{
-    display: flex;
-    justify-content: space-between;
+    /* display: flex; */
     padding: 0.25rem;
+    margin-right: 0em;
     font-family: 'F1Font';
     font-size: 20px;
     font-weight: bold;
@@ -253,10 +252,16 @@
     align-items: center;
 }
 
+form{
+    display: flex;
+    flex-direction: column;
+}
+
 .form-button{
     display: flex;
+    flex-grow: 1;
     justify-content: center;
-    padding: 0.5rem;
+    padding-top: 0.5rem;
     font-family: 'F1Font';
     font-size: 20px;
     font-weight: bold;
@@ -264,6 +269,14 @@
     align-items: center;
     
 }
+
+.form-labels{
+    /* display:flex;
+    align-items:center;
+    word-wrap: break-word;
+    width: 150px; */
+}
+
 
 input{
     display:flex;
@@ -275,7 +288,7 @@ input{
     /* align-items: center; */
     border-color: #302f2d;
     border-width: 1px;
-    width: 200px
+    width: 300px
 }
 
 .input-mobile{
