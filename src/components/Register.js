@@ -153,7 +153,7 @@ const Register = () => {
                         onBlur={() => setPwdFocus(false)}
                     />
                 </div>
-                <p id="pwdnote" className ={pwdFocus && !validPwd ? "instructions": "offscreen"}>
+                <p id="pwdnote" className ={pwdFocus && pwd && !validPwd ? "instructions": "offscreen"}>
                     <FontAwesomeIcon  icon={faInfoCircle} />
                     8 to 24 characters. <br />
                     Must include upper and lowercase letters, a number and a special character. <br />
