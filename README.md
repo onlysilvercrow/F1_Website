@@ -1,4 +1,5 @@
-# f1_website
+# f1_website - [https://ambitious-pebble-02008e903.2.azurestaticapps.net/](https://ambitious-pebble-02008e903.2.azurestaticapps.net/)
+
 Personal project created using React for frontend and Azure Functions for backend login functionality.
 Championship page is under construction and so is an authorised route that only admins have access to.
 Graphs:
